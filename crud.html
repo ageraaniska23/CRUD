@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>input nilai</title>
+</head>
+<body>
+    <fieldset>
+        <h3>NILAI MAHASISWA</h3>
+        <label>masukkan nilai absensi</label>
+        <input id="absensi" type="number" placeholder="Masukkan angka"><br>
+        <label>masukkan nilai tugas</label>
+        <input id="tugas" type="number" placeholder="Masukkan angka"><br>
+        <label>masukkan nilai UTS</label>
+        <input id="uts" type="number" placeholder="Masukkan angka"><br>
+        <label>masukkan nilai UAS</label>
+        <input id="uas" type="number" placeholder="Masukkan angka"><br><br>
+        <button onclick="kalkulasi()" style="margin-bottom: 10px; background-color: aqua; padding: 5px; ">kalkulasi nilai</button>
+        <fieldset style="background-color:rgb(181, 255, 193); padding: 20px;">
+            <legend>hasil nilai mahasiswa</legend>
+            nilai absensi : <span id="hasil_absen"></span><br>
+            nilai tugas : <span id="hasil_tugas"></span><br>
+            nilai uts : <span id="hasil_uts"></span><br>
+            nilai uas : <span id="hasil_uas"></span><br>
+            nilai akhir : <span id="akhir"></span>
+            grade nilai : <span id="grade_n"></span>
+        </fieldset>
+    </fieldset>
+    <script>
+        function kalkulasi(){
+            let n_absen = document.getElementById("absensi").value;
+            let n_tugas = document.getElementById("tugas").value;
+            let n_uts = document.getElementById("uts").value;
+            let n_uas = document.getElementById("uas").value;
+
+            let n_akhir = (n_absen * 10)/100 + (n_tugas*20)/100 + (n_uts * 30)/100 + (n_uas * 40)/100
+
+            document.getElementById("hasil_absen").innerHTML = n_absen;
+            document.getElementById("hasil_tugas").innerHTML = n_tugas;
+            document.getElementById("hasil_uts").innerHTML = n_uts;
+            document.getElementById("hasil_uas").innerHTML = n_uas;
+            document.getElementById("akhir").innerHTML = n_akhir;
+
+
+            let n_grade;
+            if (n_akhir < 20){
+                n_grade = "E";
+            }else if (n_akhir >= 20 && n_akhir < 40){
+                n_grade ="D";
+            }else if (n_akhir >= 40 && n_akhir < 60){
+                n_grade = "C";
+            }else if(n_akhir >= 60 && n_akhir < 80){
+                n_grade = "B";
+            }else if (n_akhir >= 80 && n_akhir <=100){
+                n_grade = "A";
+            }else{
+                n_grade = "hitungan eror";
+            }
+            
+            document.getElementById("grade_n").innerHTML = n_grade;
+        }
+    </script>
+</body>
+</html>
